@@ -1,0 +1,70 @@
+{
+  "name": "halogen",
+  "version": "0.0.0",
+  "description": "🛠 DragonSpark's CLI for initializing, developing, scaffolding and maintaining software projects.",
+  "repository": "git@github.com:halogen-cli/halogen.git",
+  "author": "DragonSpark Labs <labs@dragonspark.tech> (https://labs.dragonspark.tech)",
+  "license": "Apache-2.0",
+  "engines": {
+    "node": ">=v10.19.0",
+    "yarn": ">=1.22.2"
+  },
+  "private": true,
+  "bugs": {
+    "email": "labs@dragonspark.tech",
+    "url": "https://github.com/halogen-cli/halogen/issues"
+  },
+  "homepage": "https://github.com/halogen-cli/halogen",
+  "keywords": [
+    "dragonspark",
+    "halogen",
+    "cli"
+  ],
+  "workspaces": [
+    "packages/halogen/*",
+    "packages/halokit/*"
+  ],
+  "scripts": {
+    "build": "lerna run build --stream --prefix --npm-client yarn",
+    "ci-test": "knapsack-pro-jest --config=jest.config.js --coverage",
+    "format": "prettier --write '**/*.{js,md,scss,ts}' '!**/{build,es,lib,umd}'",
+    "format:diff": "prettier --list-different '**/*.{js,md,scss,ts}' '!**/{build,es,lib,umd}'",
+    "lint": "eslint --fix",
+    "lint:docs": "alex '**/*.md' -q",
+    "test": "jest --passWithNoTests",
+    "type-check": "tsc --noEmit",
+    "type-check:watch": "yarn run type-check -- --watch"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "^7.9.0",
+    "@babel/plugin-proposal-class-properties": "^7.8.3",
+    "@babel/preset-env": "^7.9.0",
+    "@babel/preset-typescript": "^7.9.0",
+    "@commitlint/cli": "^8.3.5",
+    "@commitlint/config-conventional": "^8.3.4",
+    "@knapsack-pro/jest": "^2.7.0",
+    "@rollup/plugin-commonjs": "^11.0.2",
+    "@rollup/plugin-node-resolve": "^7.1.1",
+    "@types/jest": "^25.1.4",
+    "@types/node": "^13.9.5",
+    "@typescript-eslint/eslint-plugin": "^2.25.0",
+    "@typescript-eslint/parser": "^2.25.0",
+    "@wessberg/rollup-plugin-ts": "^1.2.21",
+    "alex": "^8.1.1",
+    "eslint": "^6.8.0",
+    "husky": "^4.2.3",
+    "jest": "^25.2.3",
+    "lerna": "^3.20.2",
+    "lint-staged": "^10.0.9",
+    "minimist": "^1.2.5",
+    "prettier": "^2.0.2",
+    "rimraf": "^3.0.2",
+    "rollup": "^2.2.0",
+    "ts-jest": "^25.2.1",
+    "typescript": "^3.8.3"
+  },
+  "resolutions": {
+    "minimist": "^1.2.5"
+  }
+}
