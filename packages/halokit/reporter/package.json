@@ -36,5 +36,7 @@
     "clean": "rimraf dist lib node_modules"
   },
   "devDependencies": {},
-  "dependencies": {}
+  "dependencies": {
+    "chalk": "^4.0.0"
+  }
 }
