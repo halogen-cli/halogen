@@ -37,6 +37,7 @@
   },
   "devDependencies": {},
   "dependencies": {
-    "chalk": "^4.0.0"
+    "chalk": "^4.0.0",
+    "strip-ansi": "^6.0.0"
   }
 }
