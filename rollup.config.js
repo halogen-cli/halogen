@@ -22,7 +22,7 @@ export default {
       file: path.join(packageFolder, 'dist/lib/index.js')
     }
   ],
-  external: ['chalk', 'rxjs', 'ajv'],
+  external: ['chalk', 'rxjs', 'ajv', 'strip-ansi'],
   plugins: [
     resolve({
       extensions,
