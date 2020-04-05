@@ -1,0 +1,68 @@
+version: 2.1
+orbs:
+  node: circleci/node@1.1.6
+defaults: &defaults
+  working_directory: ~/halo
+  docker:
+    - image: circleci/node:13.12.0
+jobs:
+  setup:
+    <<: *defaults
+    steps:
+      - checkout
+      - restore_cache:
+          name: Restore Yarn's package cache
+          keys:
+            - yarn-packages-v1-{{ .Branch }}-{{ checksum "yarn.lock" }}
+            - yarn-packages-v1-{{ .Branch }}-
+            - yarn-packages-v1-
+      - run:
+          name: Install dependencies
+          command: yarn --frozen-lockfile --cache-folder ~/.cache/yarn install
+      - save_cache:
+          name: Save Yarn's updated package cache
+          key: dependency-cache-{{ .Branch }}-{{ checksum "yarn.lock" }}
+          paths:
+            - ~/.cache/yarn
+      - run:
+          name: Verify typings with TS compiler
+          command: yarn type-check
+      - persist_to_workspace:
+          name: Persist state
+          root: ~/
+          paths: halo
+  test:
+    <<: *defaults
+    parallelism: 4
+    steps:
+      - attach_workspace:
+          at: ~/
+      - run:
+          name: Run Jest tests
+          command: yarn ci-test
+      - persist_to_workspace:
+          name: Persist state
+          root: ~/
+          paths: halo
+  coverage:
+    <<: *defaults
+    steps:
+      - attach_workspace:
+          at: ~/
+      - run:
+          name: Update CodeCov's information
+          command: bash <(curl -s https://codecov.io/bash) -v
+workflows:
+  version: 2
+  integration:
+    jobs:
+      - setup
+      - test:
+          requires:
+            - setup
+      - build:
+          requires:
+            - test
+      - coverage:
+          requires:
+            - build
