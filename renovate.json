@@ -1,0 +1,15 @@
+{
+  "extends": [
+    "config:base",
+    ":prHourlyLimit4",
+    ":automergeMinor",
+    ":automergePr",
+    ":automergeRequireAllStatusChecks",
+    ":assignAndReview(AzaelDragon)",
+    ":rebaseStalePrs",
+    ":maintainLockFilesWeekly"
+  ],
+  "rangeStrategy": "update-lockfile",
+  "labels": ["Type: Dependency 📦"],
+  "rebaseLabel": "Status: Requires rebase ♻️"
+}
