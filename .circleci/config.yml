@@ -44,6 +44,14 @@ jobs:
           name: Persist state
           root: ~/
           paths: halo
+  build:
+    <<: *defaults
+    steps:
+      - attach_workspace:
+          at: ~/
+      - run:
+          name: Compile distributable files
+          command: yarn build
   coverage:
     <<: *defaults
     steps:
