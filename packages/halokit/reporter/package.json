@@ -1,0 +1,43 @@
+{
+  "name": "@halokit/reporter",
+  "version": "0.0.1",
+  "description": "HaloKit - Terminal reporting utility",
+  "repository": "git@github.com:halogen-cli/halogen.git",
+  "author": "DragonSpark Labs <labs@dragonspark.tech> (https://labs.dragonspark.tech)",
+  "license": "Apache-2.0",
+  "engines": {
+    "node": ">=v10.19.0",
+    "yarn": ">=1.22.2"
+  },
+  "private": false,
+  "bugs": {
+    "email": "labs@dragonspark.tech",
+    "url": "https://github.com/halogen-cli/halogen/issues"
+  },
+  "homepage": "https://github.com/halogen-cli/halogen/tree/master/packages/halokit/reporter#readme",
+  "keywords": [
+    "dragonspark",
+    "halogen",
+    "cli"
+  ],
+  "main": "dist/lib/index.js",
+  "module": "dist/es/index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "publishConfig": {
+    "access:": "public"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "yarn clean && rollup -c ../../../rollup.config.js",
+    "clean": "rimraf dist lib node_modules"
+  },
+  "devDependencies": {},
+  "dependencies": {
+    "chalk": "^4.0.0",
+    "strip-ansi": "^6.0.0"
+  }
+}
