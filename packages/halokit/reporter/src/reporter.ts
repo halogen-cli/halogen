@@ -24,8 +24,14 @@ export class ConsoleReporter {
    */
   _emojis: Array<string>;
 
-  constructor() {
+  /**
+   * @private
+   */
+  _addEmojis: boolean;
+
+  constructor(hasEmojis?: boolean) {
     this._emojis = ['', '🛠', 'ℹ️', '⚠️', '❌', '☠️', '✅'];
+    this._addEmojis = hasEmojis ? true : false;
   }
 
   /**
@@ -82,7 +88,7 @@ export class ConsoleReporter {
     }
 
     targetString = targetString.concat(item.content);
-    const applyEmoji = item.emoji ? true : false;
+    const applyEmoji = this._addEmojis ? true : false;
 
     /* istanbul ignore next */
     const printToConsole = item.print ? true : false;
@@ -182,3 +188,4 @@ export class ConsoleReporter {
 }
 
 export const reporter = new ConsoleReporter();
+export const emojiReporter = new ConsoleReporter(true);
