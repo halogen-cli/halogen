@@ -26,7 +26,6 @@ export interface LogItem {
   content: string;
   level: LogLevel;
   print?: boolean;
-  emoji?: boolean;
 }
 
 /**
