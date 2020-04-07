@@ -11,7 +11,7 @@ import stripAnsi from 'strip-ansi';
 
 export class TerminalIO {
   formatter: Chalk;
-  strip: (string: string) => string;
+  stripANSI: (string: string) => string;
   stderr: NodeJS.WritableStream;
   stdin: NodeJS.ReadableStream;
   stdout: NodeJS.WritableStream;
@@ -22,7 +22,7 @@ export class TerminalIO {
     stdout = process.stdout
   } = {}) {
     this.formatter = chalk;
-    this.strip = stripAnsi;
+    this.stripANSI = stripAnsi;
     this.stderr = stderr;
     this.stdin = stdin;
     this.stdout = stdout;

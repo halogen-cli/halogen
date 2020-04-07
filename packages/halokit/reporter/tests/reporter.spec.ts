@@ -6,7 +6,13 @@
  * in the LICENSE file in the root directory of this source tree.
  */
 
-import { MultiLogItem, reporter, LogLevel, LogItem } from '../src';
+import {
+  MultiLogItem,
+  reporter,
+  emojiReporter,
+  LogLevel,
+  LogItem
+} from '../src';
 
 describe('@Halokit/Reporter :: Reporting functionality', () => {
   it('reports multi-logging correctly', () => {
@@ -52,42 +58,36 @@ describe('@Halokit/Reporter :: Reporting functionality', () => {
     };
     const log1E: LogItem = {
       content: 'An emojified debug log',
-      level: LogLevel.Debug,
-      emoji: true
+      level: LogLevel.Debug
     };
     const log2: LogItem = {
       content: 'An info log',
-      level: LogLevel.Info,
-      emoji: true
+      level: LogLevel.Info
     };
     const log3: LogItem = {
       content: 'A warning log',
-      level: LogLevel.Warn,
-      emoji: true
+      level: LogLevel.Warn
     };
     const log4: LogItem = {
       content: 'An error log',
-      level: LogLevel.Error,
-      emoji: true
+      level: LogLevel.Error
     };
     const log5: LogItem = {
       content: 'A fatal log',
-      level: LogLevel.Fatal,
-      emoji: true
+      level: LogLevel.Fatal
     };
     const log6: LogItem = {
       content: 'A success log',
-      level: LogLevel.Success,
-      emoji: true
+      level: LogLevel.Success
     };
 
     const res1 = reporter.report(log1);
-    const res2 = reporter.report(log1E);
-    const res3 = reporter.report(log2);
-    const res4 = reporter.report(log3);
-    const res5 = reporter.report(log4);
-    const res6 = reporter.report(log5);
-    const res7 = reporter.report(log6);
+    const res2 = emojiReporter.report(log1E);
+    const res3 = emojiReporter.report(log2);
+    const res4 = emojiReporter.report(log3);
+    const res5 = emojiReporter.report(log4);
+    const res6 = emojiReporter.report(log5);
+    const res7 = emojiReporter.report(log6);
 
     expect(res1.raw).toEqual('debug: A plain debug log');
     expect(res2.raw).toEqual('🛠  debug: An emojified debug log');
