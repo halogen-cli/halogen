@@ -1,6 +1,6 @@
 {
   "name": "@halokit/reporter",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "HaloKit - Terminal reporting utility",
   "repository": "git@github.com:halogen-cli/halogen.git",
   "author": "DragonSpark Labs <labs@dragonspark.tech> (https://labs.dragonspark.tech)",
