@@ -35,9 +35,10 @@
     "build": "yarn clean && rollup -c ../../../rollup.config.js",
     "clean": "rimraf dist lib node_modules"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "@types/strip-ansi": "^5.2.1"
+  },
   "dependencies": {
-    "@types/strip-ansi": "^5.2.1",
     "chalk": "^4.0.0",
     "strip-ansi": "^6.0.0"
   }
