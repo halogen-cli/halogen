@@ -122,7 +122,7 @@ export class ConsoleReporter {
       targetString = emoji.concat(space + targetString);
     }
 
-    const rawString = termIO.strip(targetString);
+    const rawString = termIO.stripANSI(targetString);
 
     return {
       content: targetString,
