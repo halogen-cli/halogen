@@ -31,7 +31,7 @@
   "scripts": {
     "build": "yarn clean && rollup -c ./rollup.config.js",
     "clean": "rimraf dist",
-    "clean-project": "yarn clean && rimraf node_modules"
+    "clean:project": "yarn clean && rimraf node_modules"
   },
   "devDependencies": {
     "@types/fs-extra": "^8.1.0",
