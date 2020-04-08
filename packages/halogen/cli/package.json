@@ -1,0 +1,47 @@
+{
+  "name": "@halogen/cli",
+  "version": "0.0.1",
+  "description": "HaloKit - Compiling and bundling utility",
+  "repository": "git@github.com:halogen-cli/halogen.git",
+  "author": "DragonSpark Labs <labs@dragonspark.tech> (https://labs.dragonspark.tech)",
+  "license": "Apache-2.0",
+  "engines": {
+    "node": ">=v10.19.0",
+    "yarn": ">=1.22.2"
+  },
+  "private": false,
+  "bugs": {
+    "email": "labs@dragonspark.tech",
+    "url": "https://github.com/halogen-cli/halogen/issues"
+  },
+  "homepage": "https://github.com/halogen-cli/halogen/tree/master/packages/halogen/cli#readme",
+  "keywords": [
+    "dragonspark",
+    "halogen",
+    "cli"
+  ],
+  "bin": {
+    "halo": "bin/halogen.js"
+  },
+  "files": [
+    "bin"
+  ],
+  "publishConfig": {
+    "access:": "public"
+  },
+  "scripts": {
+    "build": "yarn clean && rollup -c ./rollup.config.js",
+    "clean": "rimraf bin",
+    "clean:project": "yarn clean && rimraf node_modules"
+  },
+  "devDependencies": {
+    "@types/fs-extra": "^8.1.0"
+  },
+  "dependencies": {
+    "@halokit/bundler": "0.0.1",
+    "@halokit/reporter": "^1.0.0",
+    "commander": "^5.0.0",
+    "fs-extra": "^9.0.0",
+    "path": "^0.12.7"
+  }
+}
