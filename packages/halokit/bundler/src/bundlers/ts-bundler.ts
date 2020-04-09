@@ -6,18 +6,20 @@
  * in the LICENSE file in the root directory of this source tree.
  */
 
-import { findPackageFolder, PartialOutput, BundleOptions, BundleInfo, BundlerInterface } from '../tools';
+import {
+  findPackageFolder,
+  PartialOutput,
+  BundleOptions,
+  BundleInfo,
+  BundlerInterface
+} from '../tools';
 import { join } from 'path';
 import { remove, readJSON } from 'fs-extra';
 import { rollup, OutputOptions } from 'rollup';
-import commonjs from '@rollup/plugin-commonjs';
-import resolve from '@rollup/plugin-node-resolve';
-import ts from '@wessberg/rollup-plugin-ts';
-import TypeScript from 'typescript';
 import { reporter, LogLevel } from '@halokit/reporter';
+import { buildTSOptions } from '../configs';
 
 export class TSBundler implements BundlerInterface {
-
   bundlerName: string = 'TS Library Bundler';
   bundlerVersion: string = '1.0.0';
 
@@ -25,7 +27,7 @@ export class TSBundler implements BundlerInterface {
   _options: BundleOptions;
   _info: BundleInfo;
 
-  constructor (entryPoint: string, options: BundleOptions, info: BundleInfo) {
+  constructor(entryPoint: string, options: BundleOptions, info: BundleInfo) {
     this._entryPoint = entryPoint;
     this._options = options;
     this._info = info;
@@ -38,7 +40,10 @@ export class TSBundler implements BundlerInterface {
 
     const packageFolder = await findPackageFolder(this._entryPoint);
 
-    const outDir = join(packageFolder, this._options.dir ? this._options.dir : '');
+    const outDir = join(
+      packageFolder,
+      this._options.dir ? this._options.dir : ''
+    );
 
     const outputs: Array<PartialOutput> = [
       {
@@ -53,64 +58,29 @@ export class TSBundler implements BundlerInterface {
 
     await Promise.all(outputs.map(({ directory }) => remove(directory)));
 
-    const tsEntryPoints: Array<OutputOptions> = outputs.map(({ directory, format }) => (
-      {
+    const tsEntryPoints: Array<OutputOptions> = outputs.map(
+      ({ directory, format }) => ({
         file: join(directory, 'index.js'),
         format
-      }
-    ));
+      })
+    );
 
     const packageJsonPath = join(packageFolder, 'package.json');
     const packageJson = await readJSON(packageJsonPath);
     const { dependencies = {} } = packageJson;
 
-    const extensions = ['.js', '.jsx', '.ts', '.tsx'];
+    const extensions = ['.js', '.ts'];
 
-    const bundler = await rollup({
-      input: this._entryPoint,
-      external: Object.keys(dependencies),
-      plugins: [
-        resolve({
-          extensions,
-          preferBuiltins: true
-        }),
-        commonjs(),
-        ts({
-          transpiler: 'babel',
-          exclude: ["**/node_modules/**/*.*"],
-          typescript: TypeScript,
-          tsconfig: {
-            target: "ESNext",
-            module: "CommonJS",
-            lib: [
-              "ESNext",
-              "DOM"
-            ],
-            noImplicitReturns: true,
-            noUnusedLocals: true,
-            outDir: "output",
-            sourceMap: true,
-            strict: true,
-            noFallthroughCasesInSwitch: true,
-            moduleResolution: "node",
-            allowSyntheticDefaultImports: true,
-            esModuleInterop: true,
-            forceConsistentCasingInFileNames: true,
-            emitDecoratorMetadata: true,
-            experimentalDecorators: true,
-            declaration: true,
-            removeComments: true,
-            baseUrl: "./packages",
-            incremental: false,
-            resolveJsonModule: true
-          }
-        })
-      ]
-    });
-    
-    bundler.watchFiles.forEach( (file,index) => {
+    const bundler = await rollup(
+      buildTSOptions(this._entryPoint, Object.keys(dependencies), extensions)
+    );
+
+    bundler.watchFiles.forEach((file, index) => {
       reporter.report({
-        content: `File ${file.replace(this._info.cwd + '/', '')} added to queue.`,
+        content: `File ${file.replace(
+          this._info.cwd + '/',
+          ''
+        )} added to queue.`,
         level: LogLevel.Info,
         print: true
       });
@@ -130,14 +100,20 @@ export class TSBundler implements BundlerInterface {
         for (const asset of output) {
           if (asset.type === 'asset') {
             reporter.report({
-              content: `Asset ${asset.fileName.replace(this._info.cwd + '/', '')} created`,
+              content: `Asset ${asset.fileName.replace(
+                this._info.cwd + '/',
+                ''
+              )} created`,
               level: LogLevel.Info,
               print: true
             });
           }
         }
         reporter.report({
-          content: `${format?.toUpperCase()} module bundled successfully at ${file!.replace(this._info.cwd + '/', '')}.`,
+          content: `${format?.toUpperCase()} module bundled successfully at ${file!.replace(
+            this._info.cwd + '/',
+            ''
+          )}.`,
           level: LogLevel.Success,
           print: true
         });
@@ -147,7 +123,5 @@ export class TSBundler implements BundlerInterface {
         return output;
       })
     );
-
   }
-
 }
