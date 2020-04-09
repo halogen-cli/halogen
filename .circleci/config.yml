@@ -18,19 +18,19 @@ jobs:
             - yarn-packages-v1-
       - run:
           name: Install dependencies
-          command: yarn --frozen-lockfile --cache-folder ~/.cache/yarn install
+          command: yarn --force --frozen-lockfile --cache-folder ~/.cache/yarn install
+      - run:
+          name: Setup monorepo
+          command: yarn bootstrap
       - save_cache:
           name: Save Yarn's updated package cache
           key: dependency-cache-{{ .Branch }}-{{ checksum "yarn.lock" }}
           paths:
             - ~/.cache/yarn
-      - run:
-          name: Verify typings with TS compiler
-          command: yarn type-check
       - persist_to_workspace:
           name: Persist state
           root: ~/
-          paths: halo
+          paths: [halo]
   test:
     <<: *defaults
     parallelism: 4
@@ -43,7 +43,7 @@ jobs:
       - persist_to_workspace:
           name: Persist state
           root: ~/
-          paths: halo
+          paths: [halo]
   build:
     <<: *defaults
     steps:

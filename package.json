@@ -25,6 +25,7 @@
     "packages/halokit/*"
   ],
   "scripts": {
+    "bootstrap": "lerna bootstrap",
     "build": "lerna run build --stream --prefix --npm-client yarn",
     "ci-test": "knapsack-pro-jest --config=jest.config.js --coverage",
     "clean": "lerna run clean --prefix --parallel --npm-client yarn",
