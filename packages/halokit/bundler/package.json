@@ -34,8 +34,7 @@
     "clean:project": "yarn clean && rimraf node_modules"
   },
   "devDependencies": {
-    "@types/fs-extra": "^8.1.0",
-    "rollup-plugin-execute": "^1.1.1"
+    "@types/fs-extra": "^8.1.0"
   },
   "dependencies": {
     "@halokit/reporter": "^1.0.0",
@@ -48,6 +47,7 @@
     "glob": "^7.1.6",
     "path": "^0.12.7",
     "rollup": "^2.3.3",
-    "typescript": "^3.8.3"
+    "typescript": "^3.8.3",
+    "rollup-plugin-execute": "^1.1.1"
   }
 }
