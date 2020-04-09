@@ -8,8 +8,10 @@
 
 import { TSBundler } from './ts-bundler';
 import { TSBrowserBundler } from './ts-browser-bundler';
+import { TSBinaryBundler } from './ts-binary-bundler';
 
 export const bundlers = new Map([
   ['ts', TSBundler],
-  ['ts-browser', TSBrowserBundler]
+  ['ts-browser', TSBrowserBundler],
+  ['ts-binary', TSBinaryBundler]
 ]);

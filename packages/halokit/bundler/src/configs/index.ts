@@ -7,3 +7,4 @@
  */
 
 export * from './ts-rollup';
+export * from './ts-binary-rollup';

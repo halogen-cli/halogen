@@ -7,24 +7,36 @@
  */
 
 export interface PartialOutput {
-  format: 'esm' | 'cjs' | 'amd' | 'es' | 'iife' | 'system' | 'umd' | 'commonjs' | 'module' | 'systemjs' | undefined,
-  directory: string
+  format:
+    | 'esm'
+    | 'cjs'
+    | 'amd'
+    | 'es'
+    | 'iife'
+    | 'system'
+    | 'umd'
+    | 'commonjs'
+    | 'module'
+    | 'systemjs'
+    | undefined;
+  directory: string;
 }
 
 export interface BundleOptions {
-  umd?: string,
-  globals?: string,
-  output?: string,
-  dir?: string
+  umd?: string;
+  globals?: string;
+  output?: string;
+  dir?: string;
+  binary?: string;
 }
 
 export interface BundleInfo {
-  cwd: string
-  bundler?: string
+  cwd: string;
+  bundler?: string;
 }
 
 export interface BundlerInterface {
-  bundlerName: string,
-  bundlerVersion: string,
+  bundlerName: string;
+  bundlerVersion: string;
   bundle: () => Promise<void>;
 }
