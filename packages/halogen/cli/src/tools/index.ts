@@ -7,4 +7,3 @@
  */
 
 export * from './argument-cleaner';
-export * from './index-finder';
