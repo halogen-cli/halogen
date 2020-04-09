@@ -9,6 +9,7 @@
 import { RollupOptions } from 'rollup';
 import commonjs from '@rollup/plugin-commonjs';
 import resolve from '@rollup/plugin-node-resolve';
+import json from '@rollup/plugin-json';
 import ts from '@wessberg/rollup-plugin-ts';
 import TypeScript from 'typescript';
 
@@ -19,8 +20,9 @@ export function buildTSOptions(
 ): RollupOptions {
   return {
     input: input,
-    external: Object.keys(dependencies),
+    external: dependencies,
     plugins: [
+      json(),
       resolve({
         extensions,
         preferBuiltins: true
