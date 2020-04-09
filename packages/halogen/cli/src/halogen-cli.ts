@@ -14,7 +14,6 @@ import { cleanArgs } from './tools/argument-cleaner';
 const program = new Command();
 
 export async function halogen() {
-
   const cwd = process.cwd();
   const argv = process.argv;
 
@@ -25,26 +24,66 @@ export async function halogen() {
 
   program
     .command('bundle [entryPoint]')
-    .description(`bundle the given generic entry point, attempting to guess the compiler to use`)
-    .option('-g, --globals <options>', 'particular global module names to include')
+    .description(
+      `bundle the given generic entry point, attempting to guess the compiler to use`
+    )
+    .option(
+      '-g, --globals <options>',
+      'particular global module names to include'
+    )
     .option('-d, --dir <path>', 'the directory to generate compiled files in')
     .action((entryPoint, cmd) =>
-    bundle(cleanArgs(cmd), {
-      cwd
-    }, entryPoint)
-  );
+      bundle(
+        cleanArgs(cmd),
+        {
+          cwd
+        },
+        entryPoint
+      )
+    );
 
   program
     .command('bundle:ts [entryPoint]')
-    .description(`bundle the given TypeScript entry point, generating ES and CommonJS modules.`)
-    .option('-g, --globals <options>', 'particular global module names to include')
+    .description(
+      `bundle the given TypeScript entry point, generating ES and CommonJS modules.`
+    )
+    .option(
+      '-g, --globals <options>',
+      'particular global module names to include'
+    )
     .option('-d, --dir <path>', 'the directory to generate compiled files in')
     .action((entryPoint, cmd) =>
-    bundle(cleanArgs(cmd), {
-      cwd,
-      bundler: 'ts'
-    }, entryPoint)
-  );
+      bundle(
+        cleanArgs(cmd),
+        {
+          cwd,
+          bundler: 'ts'
+        },
+        entryPoint
+      )
+    );
+
+  program
+    .command('bundle:ts-bin [entryPoint]')
+    .description(
+      `bundle the given TypeScript entry point, generating ES and CommonJS modules.`
+    )
+    .option(
+      '-g, --globals <options>',
+      'particular global module names to include'
+    )
+    .option('-d, --dir <path>', 'the directory to generate compiled files in')
+    .option('-b --binary <binary>', 'the name of the final binary to create')
+    .action((entryPoint, cmd) =>
+      bundle(
+        cleanArgs(cmd),
+        {
+          cwd,
+          bundler: 'ts-binary'
+        },
+        entryPoint
+      )
+    );
 
   program
     .command('bundle:ts-browser [entryPoint]')
@@ -53,12 +92,15 @@ export async function halogen() {
     .option('-d, --dir <path>', 'the directory to generate compiled files in')
     .option('-g, --globals <options>', 'global module names')
     .action((entryPoint, cmd) =>
-      bundle(cleanArgs(cmd), {
-        cwd,
-        bundler: 'ts-browser'
-      }, entryPoint)
+      bundle(
+        cleanArgs(cmd),
+        {
+          cwd,
+          bundler: 'ts-browser'
+        },
+        entryPoint
+      )
     );
 
   program.parse(argv);
-
 }
