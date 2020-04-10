@@ -29,7 +29,7 @@
     "build": "lerna run build --stream --prefix --npm-client yarn",
     "ci-test": "knapsack-pro-jest --config=jest.config.js --coverage",
     "clean": "lerna run clean --prefix --parallel --npm-client yarn",
-    "clean:project": "lerna run clean:project --prefix --parallel --npm client yarn",
+    "clean:project": "lerna run clean:project --prefix --parallel --npm-client yarn",
     "format": "prettier --write '**/*.{js,md,scss,ts}' '!**/{build,es,lib,umd}'",
     "format:diff": "prettier --list-different '**/*.{js,md,scss,ts}' '!**/{build,es,lib,umd}'",
     "lint": "eslint --fix",
