@@ -23,7 +23,7 @@ export default {
       file: path.join(packageFolder, 'dist/lib/index.js')
     }
   ],
-  external: ['@halokit/reporter', '@rollup/plugin-commonjs', '@rollup/plugin-node-resolve', '@wessberg/rollup-plugin-ts', 'change-case', 'fs-extra', 'glob', 'path', 'rollup', 'typescript'],
+  external: ['@halokit/reporter', '@rollup/plugin-commonjs', 'rollup-plugin-execute', '@rollup/plugin-node-resolve', '@rollup/plugin-json', '@wessberg/rollup-plugin-ts', 'change-case', 'fs-extra', 'glob', 'path', 'rollup', 'typescript'],
   plugins: [
     resolve({
       extensions,
