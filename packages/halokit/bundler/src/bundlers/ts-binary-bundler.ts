@@ -61,7 +61,9 @@ export class TSBinaryBundler implements BundlerInterface {
       banner: '#!/usr/bin/env node'
     };
 
-    await remove(outDir);
+    if (outDir !== packageFolder) {
+      await remove(outDir);
+    }
 
     const extensions = ['.js', '.ts'];
 
