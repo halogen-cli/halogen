@@ -9,9 +9,15 @@
 import { TSBundler } from './ts-bundler';
 import { TSBrowserBundler } from './ts-browser-bundler';
 import { TSBinaryBundler } from './ts-binary-bundler';
+import { EMBundler } from './em-bundler';
+import { EMBrowserBundler } from './em-browser-bundler';
+import { EMBinaryBundler } from './em-binary-bundler';
 
 export const bundlers = new Map([
   ['ts', TSBundler],
   ['ts-browser', TSBrowserBundler],
-  ['ts-binary', TSBinaryBundler]
+  ['ts-binary', TSBinaryBundler],
+  ['js', EMBundler],
+  ['js-browser', EMBrowserBundler],
+  ['js-binary', EMBinaryBundler]
 ]);

@@ -102,5 +102,65 @@ export async function halogen() {
       )
     );
 
+  program
+    .command('bundle:em [entryPoint]')
+    .description(
+      `bundle the given ECMAScript entry point, generating CommonJS modules.`
+    )
+    .option(
+      '-g, --globals <options>',
+      'particular global module names to include'
+    )
+    .option('-d, --dir <path>', 'the directory to generate compiled files in')
+    .action((entryPoint, cmd) =>
+      bundle(
+        cleanArgs(cmd),
+        {
+          cwd,
+          bundler: 'js'
+        },
+        entryPoint
+      )
+    );
+
+  program
+    .command('bundle:em-bin [entryPoint]')
+    .description(
+      `bundle the given ECMAScript entry point, generating CommonJS modules.`
+    )
+    .option(
+      '-g, --globals <options>',
+      'particular global module names to include'
+    )
+    .option('-d, --dir <path>', 'the directory to generate compiled files in')
+    .option('-b --binary <binary>', 'the name of the final binary to create')
+    .action((entryPoint, cmd) =>
+      bundle(
+        cleanArgs(cmd),
+        {
+          cwd,
+          bundler: 'js-binary'
+        },
+        entryPoint
+      )
+    );
+
+  program
+    .command('bundle:em-browser [entryPoint]')
+    .description('bundle the given .js entryPoint')
+    .option('-u, --umd <name>', 'name the module for the UMD build')
+    .option('-d, --dir <path>', 'the directory to generate compiled files in')
+    .option('-g, --globals <options>', 'global module names')
+    .action((entryPoint, cmd) =>
+      bundle(
+        cleanArgs(cmd),
+        {
+          cwd,
+          bundler: 'js-browser'
+        },
+        entryPoint
+      )
+    );
+
   program.parse(argv);
 }
