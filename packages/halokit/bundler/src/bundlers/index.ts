@@ -9,9 +9,15 @@
 import { TSBundler } from './ts-bundler';
 import { TSBrowserBundler } from './ts-browser-bundler';
 import { TSBinaryBundler } from './ts-binary-bundler';
+import { SassBundler } from './sass-bundler';
+import { SassBrowserBundler } from './sass-browser-bundler';
+import { SassBinaryBundler } from './sass-binary-bundler';
 
 export const bundlers = new Map([
   ['ts', TSBundler],
   ['ts-browser', TSBrowserBundler],
-  ['ts-binary', TSBinaryBundler]
+  ['ts-binary', TSBinaryBundler],
+  ['sass', SassBundler],
+  ['sass-browser', SassBrowserBundler],
+  ['sass-binary', SassBinaryBundler]
 ]);
