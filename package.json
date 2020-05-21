@@ -45,7 +45,7 @@
     "@commitlint/config-conventional": "^8.3.4",
     "@knapsack-pro/jest": "^2.7.0",
     "@rollup/plugin-commonjs": "^11.0.2",
-    "@rollup/plugin-node-resolve": "^7.1.1",
+    "@rollup/plugin-node-resolve": "^8.0.0",
     "@types/jest": "^25.1.4",
     "@types/node": "^13.9.5",
     "@typescript-eslint/eslint-plugin": "^3.0.0",
