@@ -87,7 +87,9 @@ export async function halogen() {
 
   program
     .command('bundle:ts-browser [entryPoint]')
-    .description('bundle the given .js entryPoint')
+    .description(
+      'bundle the given TypeScript entryPoint, generating UMD files in conjunction of ES/CJS modules.'
+    )
     .option('-u, --umd <name>', 'name the module for the UMD build')
     .option('-d, --dir <path>', 'the directory to generate compiled files in')
     .option('-g, --globals <options>', 'global module names')
@@ -147,7 +149,9 @@ export async function halogen() {
 
   program
     .command('bundle:em-browser [entryPoint]')
-    .description('bundle the given .js entryPoint')
+    .description(
+      'bundle the given ECMAScript entryPoint, generating UMD files in conjunction of ES/CJS modules.'
+    )
     .option('-u, --umd <name>', 'name the module for the UMD build')
     .option('-d, --dir <path>', 'the directory to generate compiled files in')
     .option('-g, --globals <options>', 'global module names')
