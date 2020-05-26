@@ -19,7 +19,7 @@ import { reporter, LogLevel } from '@halokit/reporter';
 import { buildBinaryTSOptions } from '../configs';
 
 export class TSBinaryBundler implements BundlerInterface {
-  bundlerName: string = 'TS Library Bundler';
+  bundlerName: string = 'TS Binary Bundler';
   bundlerVersion: string = '1.0.0';
 
   _entryPoint: string;
@@ -41,16 +41,16 @@ export class TSBinaryBundler implements BundlerInterface {
 
     const outDir = join(
       packageFolder,
-      this._options.dir ? this._options.dir : ''
+      this._options.dir ? this._options.dir : 'bin'
     );
 
     const packageJsonPath = join(packageFolder, 'package.json');
     const packageJson = await readJSON(packageJsonPath);
-    const { dependencies, packageName } = packageJson;
+    const { dependencies, name } = packageJson;
 
     let binaryName = this._options.binary
       ? this._options.binary
-      : packageName.replace('@', '').replace('/', '-');
+      : name.replace('@', '').replace('/', '-');
     binaryName = binaryName + '.js';
 
     const outputLocation = join(outDir, binaryName);
