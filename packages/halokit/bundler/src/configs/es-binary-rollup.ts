@@ -11,7 +11,7 @@ import commonjs from '@rollup/plugin-commonjs';
 import resolve from '@rollup/plugin-node-resolve';
 import execute from 'rollup-plugin-execute';
 import json from '@rollup/plugin-json';
-import babel from 'rollup-plugin-babel';
+import babel from '@rollup/plugin-babel';
 
 export function buildBinaryEMOptions(
   input: string,
@@ -29,13 +29,9 @@ export function buildBinaryEMOptions(
         preferBuiltins: true
       }),
       commonjs(),
-      commonjs(),
       babel({
         exclude: ['**/node_modules/**/*.*'],
-        externalHelpers: true,
-        runtimeHelpers: true,
-        babelrc: false
-        //presets: [['env', { modules: false }]]
+        babelHelpers: 'bundled'
       }),
       execute(`chmod +x ${binaryLocation}`)
     ]

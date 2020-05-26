@@ -17,10 +17,10 @@ import { join } from 'path';
 import { remove, readJSON } from 'fs-extra';
 import { rollup, OutputOptions } from 'rollup';
 import { reporter, LogLevel } from '@halokit/reporter';
-import { buildEMOptions } from '../configs';
+import { buildESOptions } from '../configs';
 
-export class EMBundler implements BundlerInterface {
-  bundlerName: string = 'EM Library Bundler';
+export class ESBundler implements BundlerInterface {
+  bundlerName: string = 'ES Library Bundler';
   bundlerVersion: string = '1.0.0';
 
   _entryPoint: string;
@@ -47,6 +47,10 @@ export class EMBundler implements BundlerInterface {
 
     const outputs: Array<PartialOutput> = [
       {
+        format: 'esm',
+        directory: join(outDir, 'es')
+      },
+      {
         format: 'cjs',
         directory: join(outDir, 'cjs')
       }
@@ -68,7 +72,7 @@ export class EMBundler implements BundlerInterface {
     const extensions = ['.js', '.jsx', '.es6', '.es', '.mjs'];
 
     const bundler = await rollup(
-      buildEMOptions(this._entryPoint, Object.keys(dependencies), extensions)
+      buildESOptions(this._entryPoint, Object.keys(dependencies), extensions)
     );
 
     bundler.watchFiles.forEach((file, index) => {

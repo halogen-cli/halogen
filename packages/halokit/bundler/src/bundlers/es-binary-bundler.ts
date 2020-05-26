@@ -18,8 +18,8 @@ import { rollup, OutputOptions } from 'rollup';
 import { reporter, LogLevel } from '@halokit/reporter';
 import { buildBinaryEMOptions } from '../configs';
 
-export class EMBinaryBundler implements BundlerInterface {
-  bundlerName: string = 'EM Library Bundler';
+export class ESBinaryBundler implements BundlerInterface {
+  bundlerName: string = 'ES Binary Bundler';
   bundlerVersion: string = '1.0.0';
 
   _entryPoint: string;
@@ -41,16 +41,16 @@ export class EMBinaryBundler implements BundlerInterface {
 
     const outDir = join(
       packageFolder,
-      this._options.dir ? this._options.dir : ''
+      this._options.dir ? this._options.dir : 'bin'
     );
 
     const packageJsonPath = join(packageFolder, 'package.json');
     const packageJson = await readJSON(packageJsonPath);
-    const { dependencies, packageName } = packageJson;
+    const { dependencies, name } = packageJson;
 
     let binaryName = this._options.binary
       ? this._options.binary
-      : packageName.replace('@', '').replace('/', '-');
+      : name.replace('@', '').replace('/', '-');
     binaryName = binaryName + '.js';
 
     const outputLocation = join(outDir, binaryName);

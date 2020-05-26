@@ -7,12 +7,12 @@
  */
 
 import { RollupOptions } from 'rollup';
-import babel from 'rollup-plugin-babel';
+import babel from '@rollup/plugin-babel';
 import commonjs from '@rollup/plugin-commonjs';
 import resolve from '@rollup/plugin-node-resolve';
 import json from '@rollup/plugin-json';
 
-export function buildEMOptions(
+export function buildESOptions(
   input: string,
   dependencies: Array<string>,
   extensions: Array<string>
@@ -29,10 +29,7 @@ export function buildEMOptions(
       commonjs(),
       babel({
         exclude: ['**/node_modules/**/*.*'],
-        externalHelpers: true,
-        runtimeHelpers: true,
-        babelrc: false
-        //presets: [['env', { modules: false }]]
+        babelHelpers: 'bundled'
       })
     ]
   };
