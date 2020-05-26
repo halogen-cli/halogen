@@ -66,7 +66,7 @@ export async function halogen() {
   program
     .command('bundle:ts-bin [entryPoint]')
     .description(
-      `bundle the given TypeScript entry point, generating ES and CommonJS modules.`
+      `bundle the given TypeScript entry point, generating an executable CommonJS module.`
     )
     .option(
       '-g, --globals <options>',
@@ -105,9 +105,9 @@ export async function halogen() {
     );
 
   program
-    .command('bundle:em [entryPoint]')
+    .command('bundle:es [entryPoint]')
     .description(
-      `bundle the given ECMAScript entry point, generating CommonJS modules.`
+      `bundle the given ECMAScript entry point, generating ES and CommonJS modules.`
     )
     .option(
       '-g, --globals <options>',
@@ -119,16 +119,16 @@ export async function halogen() {
         cleanArgs(cmd),
         {
           cwd,
-          bundler: 'js'
+          bundler: 'es'
         },
         entryPoint
       )
     );
 
   program
-    .command('bundle:em-bin [entryPoint]')
+    .command('bundle:es-bin [entryPoint]')
     .description(
-      `bundle the given ECMAScript entry point, generating CommonJS modules.`
+      `bundle the given ECMAScript entry point, generating an executable CommonJS module.`
     )
     .option(
       '-g, --globals <options>',
@@ -141,14 +141,14 @@ export async function halogen() {
         cleanArgs(cmd),
         {
           cwd,
-          bundler: 'js-binary'
+          bundler: 'es-binary'
         },
         entryPoint
       )
     );
 
   program
-    .command('bundle:em-browser [entryPoint]')
+    .command('bundle:es-browser [entryPoint]')
     .description(
       'bundle the given ECMAScript entryPoint, generating UMD files in conjunction of ES/CJS modules.'
     )
@@ -160,7 +160,7 @@ export async function halogen() {
         cleanArgs(cmd),
         {
           cwd,
-          bundler: 'js-browser'
+          bundler: 'es-browser'
         },
         entryPoint
       )
