@@ -38,6 +38,7 @@
   },
   "dependencies": {
     "@halokit/reporter": "^1.0.0",
+    "@rollup/plugin-babel": "^5.0.2",
     "@rollup/plugin-commonjs": "^11.0.2",
     "@rollup/plugin-json": "^4.0.2",
     "@rollup/plugin-node-resolve": "^7.1.1",

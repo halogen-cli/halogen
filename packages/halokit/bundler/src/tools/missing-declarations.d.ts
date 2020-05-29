@@ -6,3 +6,7 @@ declare module 'rollup-plugin-execute' {
     sync?: boolean
   ): Plugin;
 }
+
+declare module '@rollup/plugin-babel' {
+  export default function babel(options: any): Plugin;
+}

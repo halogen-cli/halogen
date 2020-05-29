@@ -66,7 +66,7 @@ export async function halogen() {
   program
     .command('bundle:ts-bin [entryPoint]')
     .description(
-      `bundle the given TypeScript entry point, generating ES and CommonJS modules.`
+      `bundle the given TypeScript entry point, generating an executable CommonJS module.`
     )
     .option(
       '-g, --globals <options>',
@@ -87,7 +87,9 @@ export async function halogen() {
 
   program
     .command('bundle:ts-browser [entryPoint]')
-    .description('bundle the given .js entryPoint')
+    .description(
+      'bundle the given TypeScript entryPoint, generating UMD files in conjunction of ES/CJS modules.'
+    )
     .option('-u, --umd <name>', 'name the module for the UMD build')
     .option('-d, --dir <path>', 'the directory to generate compiled files in')
     .option('-g, --globals <options>', 'global module names')
@@ -97,6 +99,68 @@ export async function halogen() {
         {
           cwd,
           bundler: 'ts-browser'
+        },
+        entryPoint
+      )
+    );
+
+  program
+    .command('bundle:es [entryPoint]')
+    .description(
+      `bundle the given ECMAScript entry point, generating ES and CommonJS modules.`
+    )
+    .option(
+      '-g, --globals <options>',
+      'particular global module names to include'
+    )
+    .option('-d, --dir <path>', 'the directory to generate compiled files in')
+    .action((entryPoint, cmd) =>
+      bundle(
+        cleanArgs(cmd),
+        {
+          cwd,
+          bundler: 'es'
+        },
+        entryPoint
+      )
+    );
+
+  program
+    .command('bundle:es-bin [entryPoint]')
+    .description(
+      `bundle the given ECMAScript entry point, generating an executable CommonJS module.`
+    )
+    .option(
+      '-g, --globals <options>',
+      'particular global module names to include'
+    )
+    .option('-d, --dir <path>', 'the directory to generate compiled files in')
+    .option('-b --binary <binary>', 'the name of the final binary to create')
+    .action((entryPoint, cmd) =>
+      bundle(
+        cleanArgs(cmd),
+        {
+          cwd,
+          bundler: 'es-binary'
+        },
+        entryPoint
+      )
+    );
+
+  program
+    .command('bundle:es-browser [entryPoint]')
+    .description(
+      'bundle the given ECMAScript entryPoint, generating UMD files in conjunction of ES/CJS modules.'
+    )
+    .option('-u, --umd <name>', 'name the module for the UMD build')
+    .option('-d, --dir <path>', 'the directory to generate compiled files in')
+    .option('-g, --globals <options>', 'global module names')
+    .action((entryPoint, cmd) =>
+      bundle(
+        cleanArgs(cmd),
+        {
+          cwd,
+          bundler: 'es-browser'
         },
         entryPoint
       )

@@ -16,10 +16,10 @@ import { join } from 'path';
 import { remove, readJSON } from 'fs-extra';
 import { rollup, OutputOptions } from 'rollup';
 import { reporter, LogLevel } from '@halokit/reporter';
-import { buildBinaryTSOptions } from '../configs';
+import { buildBinaryEMOptions } from '../configs';
 
-export class TSBinaryBundler implements BundlerInterface {
-  bundlerName: string = 'TS Binary Bundler';
+export class ESBinaryBundler implements BundlerInterface {
+  bundlerName: string = 'ES Binary Bundler';
   bundlerVersion: string = '1.0.0';
 
   _entryPoint: string;
@@ -34,7 +34,7 @@ export class TSBinaryBundler implements BundlerInterface {
 
   async bundle() {
     if (!this._entryPoint) {
-      this._entryPoint = join(this._info.cwd, 'index.ts');
+      this._entryPoint = join(this._info.cwd, 'index.js');
     }
 
     const packageFolder = await findPackageFolder(this._entryPoint);
@@ -55,7 +55,7 @@ export class TSBinaryBundler implements BundlerInterface {
 
     const outputLocation = join(outDir, binaryName);
 
-    const tsEntryPoints: OutputOptions = {
+    const emEntryPoints: OutputOptions = {
       format: 'cjs',
       file: outputLocation,
       banner: '#!/usr/bin/env node'
@@ -65,10 +65,10 @@ export class TSBinaryBundler implements BundlerInterface {
       await remove(outDir);
     }
 
-    const extensions = ['.js', '.ts'];
+    const extensions = ['.js'];
 
     const bundler = await rollup(
-      buildBinaryTSOptions(
+      buildBinaryEMOptions(
         this._entryPoint,
         Object.keys(dependencies),
         extensions,
@@ -89,7 +89,7 @@ export class TSBinaryBundler implements BundlerInterface {
 
     console.log();
 
-    const { output } = await bundler.write(tsEntryPoints);
+    const { output } = await bundler.write(emEntryPoints);
 
     reporter.report({
       content: `Bundling CJS executable...`,
@@ -109,7 +109,7 @@ export class TSBinaryBundler implements BundlerInterface {
       }
     }
     reporter.report({
-      content: `CJS executable bundled successfully at ${tsEntryPoints.file!.replace(
+      content: `CJS executable bundled successfully at ${emEntryPoints.file!.replace(
         this._info.cwd + '/',
         ''
       )}.`,

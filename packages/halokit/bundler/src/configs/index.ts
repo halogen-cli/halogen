@@ -8,3 +8,5 @@
 
 export * from './ts-rollup';
 export * from './ts-binary-rollup';
+export * from './es-rollup';
+export * from './es-binary-rollup';
