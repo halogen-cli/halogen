@@ -6,7 +6,7 @@
   "author": "DragonSpark Labs <labs@dragonspark.tech> (https://labs.dragonspark.tech)",
   "license": "Apache-2.0",
   "engines": {
-    "node": ">=v10.20.1",
+    "node": ">=v10.21.0",
     "yarn": ">=1.22.2"
   },
   "private": false,
