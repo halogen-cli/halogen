@@ -2594,9 +2594,9 @@
     ua-parser-js "^0.7.21"
 
 "@wessberg/rollup-plugin-ts@^1.2.21":
-  version "1.2.29"
-  resolved "https://registry.yarnpkg.com/@wessberg/rollup-plugin-ts/-/rollup-plugin-ts-1.2.29.tgz#28199abce81149eec4e6e5bd80f234220d1fd760"
-  integrity sha512-0hYLZ7vPg2VXF5r1IdRPC29ZQF+oPAyeX7baxmsmtHBiAkl2BvuBZt7PTYAv+EY1kLKW/bz3Ez6p2gVLQmE60Q==
+  version "1.2.30"
+  resolved "https://registry.yarnpkg.com/@wessberg/rollup-plugin-ts/-/rollup-plugin-ts-1.2.30.tgz#e32ce1cd8ae975966e75e6e9446354f8455c846e"
+  integrity sha512-wYbCVD/P7LnRi+2ynhCtRG8QvvaP2MliQQRIlUfvAMLkf2D4jarYq4/tYc8flNBrJiM/s+8NDU5ifTXWJRycPQ==
   dependencies:
     "@babel/core" "^7.10.5"
     "@babel/plugin-proposal-async-generator-functions" "^7.10.5"
