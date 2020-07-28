@@ -2433,7 +2433,12 @@
   resolved "https://registry.yarnpkg.com/@types/minimist/-/minimist-1.2.0.tgz#69a23a3ad29caf0097f06eda59b361ee2f0639f6"
   integrity sha1-aaI6OtKcrwCX8G7aWbNh7i8GOfY=
 
-"@types/node@*", "@types/node@>= 8":
+"@types/node@*":
+  version "14.0.27"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-14.0.27.tgz#a151873af5a5e851b51b3b065c9e63390a9e0eb1"
+  integrity sha512-kVrqXhbclHNHGu9ztnAwSncIgJv/FaxmzXJvGXNdcCpV1b8u1/Mi6z6m0vwy0LzKeXFTPLH0NzwmoJ3fNCIq0g==
+
+"@types/node@>= 8":
   version "14.0.26"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-14.0.26.tgz#22a3b8a46510da8944b67bfc27df02c34a35331c"
   integrity sha512-W+fpe5s91FBGE0pEa0lnqGLL4USgpLgs4nokw16SrBBco/gQxuua7KnArSEOd5iaMqbbSHV10vUDkJYJJqpXKA==
@@ -2594,9 +2599,9 @@
     ua-parser-js "^0.7.21"
 
 "@wessberg/rollup-plugin-ts@^1.2.21":
-  version "1.2.30"
-  resolved "https://registry.yarnpkg.com/@wessberg/rollup-plugin-ts/-/rollup-plugin-ts-1.2.30.tgz#e32ce1cd8ae975966e75e6e9446354f8455c846e"
-  integrity sha512-wYbCVD/P7LnRi+2ynhCtRG8QvvaP2MliQQRIlUfvAMLkf2D4jarYq4/tYc8flNBrJiM/s+8NDU5ifTXWJRycPQ==
+  version "1.2.31"
+  resolved "https://registry.yarnpkg.com/@wessberg/rollup-plugin-ts/-/rollup-plugin-ts-1.2.31.tgz#eb2b5ad67c130c3fb6fc46c7117a7d4389f3a6d5"
+  integrity sha512-UREJWwBM74ASCuGXk+j2kZraWOjtxEuBhu5Pmw3BEBPfPfameeLQbKDtUr+kGowLT/4yfYRZM90bW2r2x+COPg==
   dependencies:
     "@babel/core" "^7.10.5"
     "@babel/plugin-proposal-async-generator-functions" "^7.10.5"
