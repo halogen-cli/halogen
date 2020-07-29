@@ -2599,9 +2599,9 @@
     ua-parser-js "^0.7.21"
 
 "@wessberg/rollup-plugin-ts@^1.2.21":
-  version "1.2.31"
-  resolved "https://registry.yarnpkg.com/@wessberg/rollup-plugin-ts/-/rollup-plugin-ts-1.2.31.tgz#eb2b5ad67c130c3fb6fc46c7117a7d4389f3a6d5"
-  integrity sha512-UREJWwBM74ASCuGXk+j2kZraWOjtxEuBhu5Pmw3BEBPfPfameeLQbKDtUr+kGowLT/4yfYRZM90bW2r2x+COPg==
+  version "1.2.32"
+  resolved "https://registry.yarnpkg.com/@wessberg/rollup-plugin-ts/-/rollup-plugin-ts-1.2.32.tgz#29f744ad3cecb6b9b52b9760d062d89ef994d49c"
+  integrity sha512-Y5jzi+jfGefJEd06K7rG9FXKheI6SkxRFuF1ol6gtut3x7dfgsoJWTxb469caCk0BtbeiniE9tGfjyG6ZDJgww==
   dependencies:
     "@babel/core" "^7.10.5"
     "@babel/plugin-proposal-async-generator-functions" "^7.10.5"
@@ -4364,9 +4364,9 @@ ecc-jsbn@~0.1.1:
     safer-buffer "^2.1.0"
 
 electron-to-chromium@^1.3.413, electron-to-chromium@^1.3.488:
-  version "1.3.510"
-  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.510.tgz#dee781ff8b595c0deb60172b75d50b6889757eda"
-  integrity sha512-sLtGB0znXdmo6lM8hy5wTVo+fLqvIuO8hEpgc0DvPmFZqvBu/WB7AarEwhxVKjf3rVbws/rC8Xf+AlsOb36lJQ==
+  version "1.3.513"
+  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.513.tgz#d556da1e7d3142d209e2950bab4bf1c9b5fd75c9"
+  integrity sha512-4Mr0dfgKqe0VD6kq6FkdPmLIcJuEVsA6c6zfcs3rBb+eHEALYNI+KDhZYbzwyd+bbDuwha2Q44RHrB0I+bnXBw==
 
 emoji-regex@^7.0.1:
   version "7.0.3"
