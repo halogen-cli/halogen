@@ -1465,21 +1465,21 @@
     "@types/yargs" "^15.0.0"
     chalk "^4.0.0"
 
-"@knapsack-pro/core@^1.6.2":
-  version "1.7.0"
-  resolved "https://registry.yarnpkg.com/@knapsack-pro/core/-/core-1.7.0.tgz#d0b900ccf6ffde15e7e09c319fe5401a4449766a"
-  integrity sha512-myrMNqBGmWRsJ+P7TQR4RoMZz6OLbwNLt95gGAcK9ux1M5VCkDqNbYiADLv8alqw4qZOpRQuBSAVAtt39f4EKA==
+"@knapsack-pro/core@^2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@knapsack-pro/core/-/core-2.0.0.tgz#c0ced2f5cf1f758fc434dbe654a444240bd3f617"
+  integrity sha512-B0krQ/B/4s6gqVOtDwPaLjZdQBzbktedYwRqSFC3XiH8rf6c6Ovd6VUlKkcC/zB+9ROseb+riqLKcVorwy2EHg==
   dependencies:
     axios "0.18.1"
     axios-retry "^3.1.2"
     winston "^3.1.0"
 
-"@knapsack-pro/jest@^2.7.0":
-  version "2.7.0"
-  resolved "https://registry.yarnpkg.com/@knapsack-pro/jest/-/jest-2.7.0.tgz#26f379fe6ef8b018eba0472666e49d2fdbec710a"
-  integrity sha512-pPzHuGdSwxvxlFDp/N8+hyamO2whbhevBn2Bu2P/I4sPIBt1noM/YGNoC6d8l9LMqdTRjN7hL1tTLajzRiR3fw==
+"@knapsack-pro/jest@^3.0.0":
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/@knapsack-pro/jest/-/jest-3.0.0.tgz#ef6bf2f5dcc79d650ed51cadb742a21b13025829"
+  integrity sha512-WQRo+5keDRc1tZP+UD+GGKRQg4iN0x2+KlwLTuK64tWWYEERC15/NEFIsATQwjXsJ2P39HGkDuazUWCTtJlX7w==
   dependencies:
-    "@knapsack-pro/core" "^1.6.2"
+    "@knapsack-pro/core" "^2.0.0"
     glob "^7.1.3"
     jest "^24.8.0"
     minimatch "^3.0.4"
